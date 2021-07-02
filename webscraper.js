@@ -41,20 +41,25 @@ function check() {
 function sendconsole(params) {
   var today = new Date();
   var time = today.getHours() + ":" + today.getMinutes();
+  let box = document.getElementById("output");
   if (params == true) {
     var node = document.createElement("p");
     var textnode = document.createTextNode(
       "[" + time + "] " + "Tickets gevonden"
     );
     node.appendChild(textnode);
-    document.getElementById("output").appendChild(node);
+    box.insertBefore(node, box.firstChild);
   } else {
     var node = document.createElement("p");
     var textnode = document.createTextNode(
       "[" + time + "] " + "Geen tickets gevonden"
     );
     node.appendChild(textnode);
-    document.getElementById("output").appendChild(node);
+    box.insertBefore(node, box.firstChild);
+  }
+  console.log(box.childNodes.length);
+  if (box.childNodes.length > 20) {
+    box.removeChild(box.childNodes[20]);
   }
 }
 function sendMessage() {
@@ -68,7 +73,7 @@ function sendMessage() {
 
   var params = {
     content:
-      "Er zijn Tickets beschikbaar :partying_face: \n\n <@669564704242532374> <@850782537587359804> \n -------------",
+      "Er zijn Tickets beschikbaar :partying_face: \n https://www.efteling.com/nl/park/reserveer-bezoek/abonnementhouders/last-minute \n\n <@669564704242532374> <@850782537587359804> \n -------------",
   };
 
   request.send(JSON.stringify(params));
