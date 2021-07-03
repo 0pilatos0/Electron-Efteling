@@ -17,23 +17,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
-    <div class="container centerbox">
+    <div class="container">
+      <div class="givespace"></div>
       <div class="row">
-        <div class="col-md-8">
-          <h1>Efteling ticket bot</h1>
-          <div class="givespace"></div>
-          <textarea rows="4" cols="50" id="search"></textarea>
-          <div class="givespace"></div>
+        <div class="col-md-6" style="text-align: center">
+          <h1 style="font-family: Cardinal">Efteling ticket bot</h1>
+          <textarea rows="4" cols="50" id="search"></textarea><br />
+          <br />
+
           <button class="submit" id="submit">Aanzetten</button>
+          <br /><br />
+          <input type="checkbox" id="switch" />Geluid<label for="switch"
+            >Toggle</label
+          >
         </div>
-        <div class="col-md-4 outputB">
-          <h5>Wat is er gaande?</h5>
-          <div id="output">
-            <!-- <p>[14:30] Geen tickets</p> -->
-          </div>
+        <div class="col-md-6">
+          <div class="console" id="output"></div>
         </div>
       </div>
     </div>
+
     <script src="./webscraper.js"></script>
 
     <script

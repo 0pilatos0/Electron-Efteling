@@ -2,8 +2,10 @@ const rp = fetch("request-promise");
 let url =
   "https://www.efteling.com/nl/park/reserveer-bezoek/abonnementhouders/beschikbare-tijdsloten";
 let submit = document.getElementById("submit");
+let audioTo = document.getElementById("switch");
 let enabled = false;
 let things = [];
+let snd = new Audio("effect.mp3"); // buffers automatically when created
 check();
 
 submit.onclick = function () {
@@ -26,6 +28,11 @@ function check() {
         if (checked == true) {
           sendMessage();
           sendconsole(true);
+          snd.pause();
+          snd.currentTime = 0;
+          if (audioTo.checked == true) {
+            snd.play();
+          }
         } else {
           sendconsole(false);
         }
@@ -43,14 +50,14 @@ function sendconsole(params) {
   var time = today.getHours() + ":" + today.getMinutes();
   let box = document.getElementById("output");
   if (params == true) {
-    var node = document.createElement("p");
+    var node = document.createElement("pre");
     var textnode = document.createTextNode(
       "[" + time + "] " + "Tickets gevonden"
     );
     node.appendChild(textnode);
     box.insertBefore(node, box.firstChild);
   } else {
-    var node = document.createElement("p");
+    var node = document.createElement("pre");
     var textnode = document.createTextNode(
       "[" + time + "] " + "Geen tickets gevonden"
     );
@@ -58,8 +65,8 @@ function sendconsole(params) {
     box.insertBefore(node, box.firstChild);
   }
   console.log(box.childNodes.length);
-  if (box.childNodes.length > 20) {
-    box.removeChild(box.childNodes[20]);
+  if (box.childNodes.length > 200) {
+    box.removeChild(box.childNodes[200]);
   }
 }
 function sendMessage() {

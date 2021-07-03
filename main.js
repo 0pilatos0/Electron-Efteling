@@ -12,7 +12,6 @@ function createWindow() {
     icon: __dirname + "/efteling.ico",
   });
   win.maximize();
-  win.removeMenu();
   win.loadFile("index.html");
 }
 app.whenReady().then(() => {

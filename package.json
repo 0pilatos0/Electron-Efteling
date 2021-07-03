@@ -1,10 +1,9 @@
 {
-  "name": "electron-efteling",
-  "version": "1.0.0",
-  "description": "Scrape the Efteling.com website in search of tickets",
+  "name": "efteling-tickets",
+  "version": "1.0.1",
+  "description": "scan for efteling tickets",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
@@ -13,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/0pilatos0/Electron-Efteling.git"
   },
-  "author": "0Pilatos0",
+  "author": "0pilatos0",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/0pilatos0/Electron-Efteling/issues"
@@ -25,7 +24,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.57",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
     "@electron-forge/maker-zip": "^6.0.0-beta.57",
-    "electron": "^13.1.4"
+    "electron": "^13.1.5"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
@@ -37,7 +36,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "electron_efteling"
+            "name": "efteling_tickets"
           }
         },
         {
