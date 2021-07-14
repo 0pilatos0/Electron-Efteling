@@ -24,9 +24,22 @@
           <h1 style="font-family: Cardinal">Efteling ticket bot</h1>
           <textarea rows="4" cols="50" id="search"></textarea><br />
           <br />
+          <div id="exact">
+            <h4>Vier hier de exacte tijdsloten in</h4>
+            <p>
+              voor elk tijdslot wat je invult moet je hierboven ook een datum
+              neerzetten (dus er moeten altijd evenveel datums zijn al
+              tijdsloten)
+            </p>
+            <textarea rows="4" cols="50" id="timeBox"></textarea><br />
+          </div>
 
           <button class="submit" id="submit">Aanzetten</button>
           <br /><br />
+          <input type="checkbox" id="switch2" />Exacte tijdsloten<label
+            for="switch2"
+            >Toggle</label
+          >
           <input type="checkbox" id="switch" />Geluid<label for="switch"
             >Toggle</label
           >

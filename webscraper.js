@@ -3,16 +3,36 @@ let url =
   "https://www.efteling.com/nl/park/reserveer-bezoek/abonnementhouders/beschikbare-tijdsloten";
 let submit = document.getElementById("submit");
 let audioTo = document.getElementById("switch");
+let enableTime = document.getElementById("switch2");
 let enabled = false;
 let things = [];
+let times = [];
 let snd = new Audio("effect.mp3"); // buffers automatically when created
+
+let timeDiv = document.getElementById("exact");
+timeDiv.style.display = "none";
+
 check();
+
+enableTime.onclick = function () {
+  if (enableTime.checked == true) {
+    timeDiv.style.display = "block";
+  } else {
+    timeDiv.style.display = "none";
+  }
+};
 
 submit.onclick = function () {
   if (enabled == false) {
     submit.innerHTML = "Uitzetten";
     things = $("#search").val().split("\n");
     things = things.filter((item) => item);
+
+    if (enableTime.checked == true) {
+      times = $("#timeBox").val().split("\n");
+      times = times.filter((item) => item);
+    }
+
     enabled = true;
   } else {
     submit.innerHTML = "Aanzetten";
@@ -24,6 +44,19 @@ function check() {
   setTimeout(() => {
     if (enabled == true) {
       $.get(url, function (response) {
+        if (enableTime.checked == true) {
+          for (let i = 0; i < things.length; i++) {
+            things[i] =
+              `<td class="pl pv- palm-pv-- palm-full-width uc--first-letter">` +
+              things[i] +
+              `</td>
+                                                    <td data-label="Tijdslot" class="pl pv- palm-pv--">` +
+              times[i] +
+              `</td>`;
+          }
+        }
+        console.log(things);
+
         let checked = checkInput(response, things);
         if (checked == true) {
           sendMessage();
@@ -64,7 +97,6 @@ function sendconsole(params) {
     node.appendChild(textnode);
     box.insertBefore(node, box.firstChild);
   }
-  console.log(box.childNodes.length);
   if (box.childNodes.length > 200) {
     box.removeChild(box.childNodes[200]);
   }
